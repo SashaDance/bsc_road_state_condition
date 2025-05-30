@@ -1,6 +1,5 @@
 import numpy as np
 from typing import Tuple
-import open3d as o3d
 import cv2
 import matplotlib.pyplot as plt
 
@@ -10,8 +9,8 @@ proj_matrix = np.array([
     [0, 0, 1, 0],
 ])
 
-img_path = 'depth_map_dataset/img/0.png'
-pc_path = 'depth_map_dataset/pc/0.bin'
+img_path = 'depth_map_dataset/img/37.png'
+pc_path = 'depth_map_dataset/pc/37.bin'
 
 
 def project_points_to_camera(

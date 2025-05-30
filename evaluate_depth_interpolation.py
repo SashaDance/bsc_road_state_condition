@@ -13,9 +13,10 @@ calibrator = DepthInterpolation(
     proj_matr=projection_matrix,
 )
 
-results = calibrator.evaluate_on_dataset(
-    '/home/sashadance/python_projects/bsc_road_state_condition/depth_map_dataset',
-    split_ratio=0.8
-)
+if __name__ == '__main__':
+    results = calibrator.evaluate_on_dataset(
+        '/home/sashadance/python_projects/bsc_road_state_condition/depth_map_dataset',
+        split_ratio=0.8
+    )
 
-DepthInterpolation.print_metrics(results)
+    DepthInterpolation.print_metrics(results)
