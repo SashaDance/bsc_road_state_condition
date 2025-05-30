@@ -28,7 +28,7 @@ class DepthInterpolation:
                  device: str,
                  camera_resolution: Tuple[int, int],
                  proj_matr: np.ndarray,
-                 model_type: str = 'large',
+                 model_type: str = 'small',
                  sigma_pix: float = 8.0,
                  interp_method: str = 'linear'):
         params = MODEL_CONFIGS[model_type]
