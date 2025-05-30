@@ -1,5 +1,5 @@
 import numpy as np
-from depth_map.depth_map import DepthCalibrator
+from depth_map.depth_map_calibration import DepthCalibrator
 
 projection_matrix = np.array([
     [954.398, 0, 628.246, 0],
