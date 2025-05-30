@@ -104,8 +104,17 @@ class DepthCalibrator:
         depth_lidar_val = depth_lidar[val_indices]
         depth_vals_val = depth[uv_val[1], uv_val[0]]
         
-        X_train = depth_vals_train.reshape(-1, 1)
-        y_train = depth_lidar_train.reshape(-1, 1)
+        residuals = depth_lidar_train - depth_vals_train
+        q1, q3 = np.percentile(residuals, [25, 75])
+        iqr = q3 - q1
+        lower, upper = q1 - 1.5 * iqr, q3 + 1.5 * iqr
+        mask = (residuals >= lower) & (residuals <= upper)
+        uv_train_f = uv_train[:, mask]
+        d_lidar_f = depth_lidar_train[mask]
+        d_pred_f = depth_vals_train[mask]
+
+        X_train = d_pred_f.reshape(-1, 1)
+        y_train = d_lidar_f.reshape(-1, 1)
         calibrator = self.calibrator
         calibrator.fit(X_train, y_train)
         
